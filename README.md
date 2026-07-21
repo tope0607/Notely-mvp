@@ -1,56 +1,107 @@
-# Welcome to your Expo app 👋
+# Notely
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Notely is a voice-activated podcast note-capture app. While you listen to a
+podcast on Spotify **with the app open**, you say **“note this”** and Notely
+grabs the relevant ~30-second transcript segment as a note — saved locally and
+tagged with the podcast name, episode, and timestamp.
 
-## Get started
+**Core loop:** listening → “note this” → correct transcript segment captured →
+saved & viewable.
 
-1. Install dependencies
+## MVP scope
 
+**In scope**
+
+- **Foreground-first**: the app is open while you listen.
+- **Spotify** detects *what's playing + timestamp* only.
+- **Transcripts** come from each show's **RSS feed** (JSON and VTT first), for a
+  small hardcoded list of supported shows (Lex Fridman, Huberman Lab, All-In,
+  Tim Ferriss, The Daily).
+- **Local, on-device storage** — no backend server.
+- **Android-first.**
+
+**Explicitly deferred** (do not build folders/abstractions for these yet, but
+don't make them impossible later): background listening, a Quick Settings tile,
+YouTube support, an audio-capture fallback, and cloud sync.
+
+## Prerequisites
+
+- Node LTS + npm
+- A **custom dev build** of Notely installed on an Android device/emulator
+  (this project uses a development build with native modules — **not** Expo Go).
+- Android device or emulator
+
+## Run the dev build
+
+1. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+2. Install the **custom dev build** (the Notely app with native modules) on your
+   device/emulator once — see the Expo [development builds](https://docs.expo.dev/develop/development-builds/introduction/)
+   docs.
+3. Start the bundler and open it in the dev build:
    ```bash
-   npx expo start
+   npx expo start --dev-client
    ```
 
-In the output, you'll find options to open the app in a
+> You only need to **rebuild** the dev build when **native dependencies change**
+> (a new native module, or config-plugin/`app.json` native changes). Day-to-day
+> JS/TS edits just need `npx expo start --dev-client`.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Folder map
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Expo Router's route files live in `src/app/`; everything else lives under `src/`,
+grouped by owner.
 
-## Get a fresh project
+| Path                       | What                                                        |
+| -------------------------- | ---------------------------------------------------------- |
+| `src/app/`                 | Routes/screens only (Expo Router).                         |
+| `src/theme/`               | Design tokens (colors, type, spacing, radii) — Figma → code. |
+| `src/components/`          | Reusable UI + shared loading/error/empty states.           |
+| `src/services/spotify/`    | Spotify OAuth + "what's playing".                          |
+| `src/services/transcripts/`| RSS discovery, JSON/VTT parser, cache, supported shows.    |
+| `src/storage/`             | Note data model + local CRUD.                              |
+| `src/capture/`             | Speech recognition, "note this" trigger, segment extraction, episode matching. |
+| `src/types/`               | Shared TypeScript contracts (change by agreement).         |
+| `src/lib/`                 | Small shared utilities.                                    |
+| `docs/`                    | `ARCHITECTURE.md`, `CONTRIBUTING.md`.                      |
 
-When you're ready, run:
+Each `src/*` folder has its own `README.md` stating owner, what does/doesn't
+belong, and the related Linear issues.
 
-```bash
-npm run reset-project
-```
+## Three-track ownership
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+| Track | Area | Folders | Linear |
+| ----- | ---- | ------- | ------ |
+| **1 — Design + Frontend** | Design system, all screens, reusable components, loading/error/empty states | `src/app/`, `src/theme/`, `src/components/` | **TOP-5** (TOP-6…TOP-13) |
+| **2 — Backend / Data** | Spotify OAuth + now-playing, RSS discovery/parse/cache, local storage | `src/services/`, `src/storage/` | **TOP-14** (TOP-15…TOP-20) |
+| **3 — AI / Algorithm** | Speech + trigger, segment extraction, episode matching | `src/capture/` | **TOP-21** (TOP-22…TOP-25) |
+| **Shared** | Cross-track types/contracts | `src/types/` | consensus |
+| **Integration** | Wire the tracks into one capture flow | — | **TOP-26** |
 
-### Other setup steps
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the end-to-end capture
+pipeline and where the tracks meet, and
+[`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for team conventions.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Design source
 
-## Learn more
+Track 1's visual language comes from the **Notely** Figma file. Its variable
+collections (**Primitives** and **Tokens**) are mirrored in code under
+[`src/theme/`](src/theme/) — the raw DTCG exports live in `src/theme/figma/`,
+and `src/theme/README.md` documents how to re-sync when Figma changes.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Path alias
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Imports use the `@/` alias → `src/` (configured in `tsconfig.json`), plus
+`@/assets/*` → `assets/*`. Example: `import { Colors } from '@/theme';`.
 
-## Join the community
+## Config / secrets
 
-Join our community of developers creating universal apps.
+Copy `.env.example` → `.env` and fill in the Spotify credentials. The real
+`.env` is gitignored.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Linear
+
+Project board: <https://linear.app/> — Tracks **TOP-5** (Design/FE),
+**TOP-14** (Backend/Data), **TOP-21** (AI/Algorithm), integration **TOP-26**.
