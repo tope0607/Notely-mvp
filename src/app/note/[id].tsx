@@ -35,5 +35,5 @@ export default function NoteDetailScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, padding: Spacing.four, gap: Spacing.four },
+  safeArea: { flex: 1, padding: Spacing[24], gap: Spacing[24] },
 });

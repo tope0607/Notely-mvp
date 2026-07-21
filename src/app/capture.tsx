@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: {
     flex: 1,
-    padding: Spacing.four,
-    gap: Spacing.four,
+    padding: Spacing[24],
+    gap: Spacing[24],
     alignItems: 'center',
   },
 });

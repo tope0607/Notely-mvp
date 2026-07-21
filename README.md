@@ -84,6 +84,13 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the end-to-end capture
 pipeline and where the tracks meet, and
 [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for team conventions.
 
+## Design source
+
+Track 1's visual language comes from the **Notely** Figma file. Its variable
+collections (**Primitives** and **Tokens**) are mirrored in code under
+[`src/theme/`](src/theme/) — the raw DTCG exports live in `src/theme/figma/`,
+and `src/theme/README.md` documents how to re-sync when Figma changes.
+
 ## Path alias
 
 Imports use the `@/` alias → `src/` (configured in `tsconfig.json`), plus

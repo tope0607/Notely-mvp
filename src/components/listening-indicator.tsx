@@ -9,7 +9,7 @@
 import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { Radii, Spacing } from '@/theme';
+import { Radius, Spacing } from '@/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 export type ListeningIndicatorProps = {
@@ -38,10 +38,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.two,
-    paddingVertical: Spacing.two,
-    paddingHorizontal: Spacing.three,
-    borderRadius: Radii.pill,
+    gap: Spacing[8],
+    paddingVertical: Spacing[8],
+    paddingHorizontal: Spacing[16],
+    borderRadius: Radius.full,
   },
-  dot: { width: 10, height: 10, borderRadius: Radii.pill },
+  dot: { width: 10, height: 10, borderRadius: Radius.full },
 });

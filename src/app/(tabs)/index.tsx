@@ -28,5 +28,5 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingBottom: BottomTabInset + Spacing.three },
+  safeArea: { flex: 1, paddingBottom: BottomTabInset + Spacing[16] },
 });

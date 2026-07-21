@@ -10,7 +10,7 @@ import { Pressable, StyleSheet, type PressableProps } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Radii, Spacing } from '@/theme';
+import { Radius, Spacing } from '@/theme';
 
 export type ButtonProps = Omit<PressableProps, 'children'> & {
   title: string;
@@ -40,9 +40,9 @@ export function Button({ title, variant = 'primary', disabled, style, ...rest }:
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: Spacing.three,
-    paddingHorizontal: Spacing.four,
-    borderRadius: Radii.md,
+    paddingVertical: Spacing[16],
+    paddingHorizontal: Spacing[24],
+    borderRadius: Radius.large,
     alignItems: 'center',
     justifyContent: 'center',
   },

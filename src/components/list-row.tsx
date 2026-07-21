@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: Spacing.three,
-    paddingHorizontal: Spacing.three,
-    gap: Spacing.three,
+    paddingVertical: Spacing[16],
+    paddingHorizontal: Spacing[16],
+    gap: Spacing[16],
   },
-  textCol: { flex: 1, gap: Spacing.half },
+  textCol: { flex: 1, gap: Spacing[2] },
   right: { marginLeft: 'auto' },
   pressed: { opacity: 0.7 },
 });

@@ -13,7 +13,7 @@ import { ExternalLink } from './external-link';
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
-import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { Colors, MaxContentWidth, Spacing } from '@/theme';
 
 export default function AppTabs() {
   return (
@@ -79,19 +79,19 @@ const styles = StyleSheet.create({
   tabListContainer: {
     position: 'absolute',
     width: '100%',
-    padding: Spacing.three,
+    padding: Spacing[16],
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
   innerContainer: {
-    paddingVertical: Spacing.two,
-    paddingHorizontal: Spacing.five,
-    borderRadius: Spacing.five,
+    paddingVertical: Spacing[8],
+    paddingHorizontal: Spacing[32],
+    borderRadius: Spacing[32],
     flexDirection: 'row',
     alignItems: 'center',
     flexGrow: 1,
-    gap: Spacing.two,
+    gap: Spacing[8],
     maxWidth: MaxContentWidth,
   },
   brandText: {
@@ -101,15 +101,15 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   tabButtonView: {
-    paddingVertical: Spacing.one,
-    paddingHorizontal: Spacing.three,
-    borderRadius: Spacing.three,
+    paddingVertical: Spacing[4],
+    paddingHorizontal: Spacing[16],
+    borderRadius: Spacing[16],
   },
   externalPressable: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: Spacing.one,
-    marginLeft: Spacing.three,
+    gap: Spacing[4],
+    marginLeft: Spacing[16],
   },
 });

@@ -6,7 +6,7 @@
 import { StyleSheet } from 'react-native';
 
 import { ThemedView, type ThemedViewProps } from '@/components/themed-view';
-import { Radii, Spacing } from '@/theme';
+import { Radius, Spacing } from '@/theme';
 
 export type CardProps = ThemedViewProps;
 
@@ -16,8 +16,8 @@ export function Card({ style, type = 'backgroundElement', ...rest }: CardProps) 
 
 const styles = StyleSheet.create({
   card: {
-    padding: Spacing.four,
-    borderRadius: Radii.lg,
-    gap: Spacing.three,
+    padding: Spacing[24],
+    borderRadius: Radius.xxlarge,
+    gap: Spacing[16],
   },
 });

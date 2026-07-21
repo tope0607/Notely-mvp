@@ -7,7 +7,7 @@
 
 import { StyleSheet, TextInput, type TextInputProps } from 'react-native';
 
-import { Radii, Spacing } from '@/theme';
+import { Radius, Spacing } from '@/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 export type InputProps = TextInputProps;
@@ -29,9 +29,9 @@ export function Input({ style, ...rest }: InputProps) {
 
 const styles = StyleSheet.create({
   input: {
-    paddingVertical: Spacing.three,
-    paddingHorizontal: Spacing.three,
-    borderRadius: Radii.md,
+    paddingVertical: Spacing[16],
+    paddingHorizontal: Spacing[16],
+    borderRadius: Radius.large,
     fontSize: 16,
   },
 });

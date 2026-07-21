@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: {
     flex: 1,
-    padding: Spacing.four,
-    gap: Spacing.four,
-    paddingBottom: BottomTabInset + Spacing.three,
+    padding: Spacing[24],
+    gap: Spacing[24],
+    paddingBottom: BottomTabInset + Spacing[16],
   },
 });
