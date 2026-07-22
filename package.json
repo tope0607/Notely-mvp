@@ -1,43 +1,25 @@
 {
-  "name": "notely-mvp",
-  "main": "expo-router/entry",
-  "version": "1.0.0",
+  "name": "notely-backend",
+  "version": "0.1.0",
+  "description": "Notely backend: retrieves podcast metadata, downloads audio, and (in later phases) generates and serves timestamped transcript segments.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
+  },
   "dependencies": {
-    "@expo/ui": "~57.0.7",
-    "expo": "~57.0.7",
-    "expo-constants": "~57.0.6",
-    "expo-device": "~57.0.1",
-    "expo-font": "~57.0.1",
-    "expo-glass-effect": "~57.0.1",
-    "expo-image": "~57.0.1",
-    "expo-linking": "~57.0.3",
-    "expo-router": "~57.0.7",
-    "expo-splash-screen": "~57.0.4",
-    "expo-status-bar": "~57.0.1",
-    "expo-symbols": "~57.0.1",
-    "expo-system-ui": "~57.0.1",
-    "expo-web-browser": "~57.0.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-native": "0.86.0",
-    "react-native-gesture-handler": "~2.32.0",
-    "react-native-reanimated": "4.5.0",
-    "react-native-safe-area-context": "~5.7.0",
-    "react-native-screens": "4.25.2",
-    "react-native-web": "~0.21.0",
-    "react-native-worklets": "0.10.0"
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
   },
   "devDependencies": {
-    "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
-  },
-  "scripts": {
-    "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "lint": "expo lint"
-  },
-  "private": true
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.3"
+  }
 }
