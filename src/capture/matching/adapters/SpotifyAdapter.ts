@@ -1,4 +1,4 @@
-import { PlaybackState } from '../../domain/models';
+import { PlaybackState } from '../../domain/model';
 
 export interface RawSpotifyNowPlaying {
   item?: {
@@ -21,3 +21,4 @@ export function toPlaybackState(raw: RawSpotifyNowPlaying): PlaybackState | null
     publishDate: raw.item.release_date,
   };
 }
+

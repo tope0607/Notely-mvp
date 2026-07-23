@@ -1,12 +1,9 @@
 import {
   ExpoSpeechRecognitionModule,
   ExpoSpeechRecognitionModuleEmitter,
-} 
-from 'expo-speech-recognition';
-import { ISpeechRecognitionService }
-from '../domain/interfaces';
-import { PermissionDeniedError, SpeechRecognitionError } 
-from '/domain/errors';
+} from 'expo-speech-recognition';
+import { PermissionDeniedError, SpeechRecognitionError } from '../domain/error';
+import { ISpeechRecognitionService } from '../domain/interface';
 
 export class SpeechRecognitionService implements ISpeechRecognitionService {
   private transcriptListeners: Array<(transcript: string, isFinal: boolean) => void> = [];

@@ -1,12 +1,12 @@
 import {
+  EpisodeMatchResult,
+  Highlight,
   PlaybackState,
   PodcastEpisode,
   Transcript,
   TranscriptSegment,
-  Highlight,
   TriggerEvent,
-  EpisodeMatchResult,
-} from './models';
+} from './model';
 
 /**
  * Speech Recognition

@@ -1,7 +1,7 @@
-import { IEpisodeMatcher } from '../domain/interfaces';
-import { PlaybackState, PodcastEpisode, EpisodeMatchResult } from '../domain/models';
+import { IEpisodeMatcher } from '../domain/interface';
+import { EpisodeMatchResult, PlaybackState, PodcastEpisode } from '../domain/model';
 import { DEFAULT_MATCH_CONFIDENCE_THRESHOLD } from '../shared/constants';
-import { stringSimilarity, dateProximityScore, normalizeText } from '../shared/utils';
+import { dateProximityScore, normalizeText, stringSimilarity } from '../shared/utils';
 import { getShowAdapter } from './adapters/TranscriptAdapter';
 
 export interface EpisodeMatcherConfig {

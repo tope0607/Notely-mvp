@@ -1,8 +1,7 @@
-
-import { ITriggerDetector } from '../domain/interfaces';
-import { TriggerEvent } from '../domain/models';
+import { ITriggerDetector } from '../domain/interface';
+import { TriggerEvent } from '../domain/model';
+import { DEFAULT_DEBOUNCE_MS, DEFAULT_TRIGGER_PHRASES } from '../shared/constants';
 import { findNormalizedPhrase } from '../shared/utils';
-import { DEFAULT_TRIGGER_PHRASES, DEFAULT_DEBOUNCE_MS } from '../shared/constants';
 
 export interface TriggerDetectorConfig {
   /** Phrases that count as a trigger. Matched case-insensitively

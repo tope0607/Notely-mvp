@@ -1,6 +1,6 @@
-import { ISegmentExtractor } from '../domain/interfaces';
-import { Transcript, TranscriptSegment, TriggerEvent } from '../domain/models';
-import { SegmentExtractionError } from '../domain/errors';
+import { SegmentExtractionError } from '../domain/error';
+import { ISegmentExtractor } from '../domain/interface';
+import { Transcript, TranscriptSegment, TriggerEvent } from '../domain/model';
 import { WindowStrategy } from './WindowStrategy';
 
 export class SegmentExtractor implements ISegmentExtractor {

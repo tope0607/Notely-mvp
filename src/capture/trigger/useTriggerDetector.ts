@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { PermissionDeniedError, SpeechRecognitionError } from '../domain/error';
+import { TriggerEvent } from '../domain/model';
 import { SpeechRecognitionService } from './SpeechRecognitionService';
 import { TriggerDetector, TriggerDetectorConfig } from './TriggerDetector';
-import { TriggerEvent } from '../domain/models';
-import { PermissionDeniedError, SpeechRecognitionError } from '../domain/errors';
 
 export interface UseTriggerDetectorOptions extends TriggerDetectorConfig {
   /** Auto-start listening on mount / stop on unmount. Default true. */

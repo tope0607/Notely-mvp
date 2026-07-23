@@ -1,5 +1,5 @@
-import { TranscriptSegment } from '../domain/models';
-import { DEFAULT_WINDOW_MS, DEFAULT_TRAILING_MS } from '../shared/constants';
+import { TranscriptSegment } from '../domain/model';
+import { DEFAULT_TRAILING_MS, DEFAULT_WINDOW_MS } from '../shared/constants';
 
 export interface WindowStrategyConfig {
   /** Default backward window before snapping. */
