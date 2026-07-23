@@ -1,6 +1,6 @@
-import { WindowStrategy } from '../segmentation/WindowStrategy';
+import { Transcript, TranscriptSegment, TriggerEvent } from '../domain/model';
 import { SegmentExtractor } from '../segmentation/SegmentExtractor';
-import { Transcript, TranscriptSegment, TriggerEvent } from '../domain/models';
+import { WindowStrategy } from '../segmentation/WindowStrategy';
 
 function makeSegments(): TranscriptSegment[] {
   return [

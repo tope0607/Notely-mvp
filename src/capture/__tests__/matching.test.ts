@@ -1,5 +1,5 @@
+import { PlaybackState, PodcastEpisode } from '../domain/model';
 import { EpisodeMatcher } from '../matching/EpisodeMatcher';
-import { PlaybackState, PodcastEpisode } from '../domain/models';
 
 function makePlaybackState(overrides: Partial<PlaybackState> = {}): PlaybackState {
   return {
